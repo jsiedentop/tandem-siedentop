@@ -1,0 +1,31 @@
+<section class="container container-pics">
+  <div class="col-lg-10 col-lg-offset-1 text-center">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Impressionen</h1>
+        <hr class="none" />
+      </div>
+
+      <div class="row">
+        {% for image in site.static_files %}
+          {% if image.path contains 'img/slider' %}
+            {% if image.extname == '.jpg' or image.extname == '.jpeg' %}
+
+              <a href="https://www.instagram.com/{{ site.instagram }}/" target="_blank">
+                <img class="pic-item" src="{{ site.baseurl }}{{ image.path }}"/>
+              </a>
+            {% else %}
+                  <!--
+                  <video width="300" height="300" controls>
+                    <source src="{{ site.baseurl }}{{ image.path }}" type="video/mp4">
+                  </video>
+                  -->
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+  <hr>
+</section>

@@ -1,0 +1,36 @@
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/custom.js"></script>
+
+<<script type="text/javascript">
+
+  setTimeout(setBookingLinks, 500);
+
+  function setBookingLinks() {
+    Array.from(document.getElementsByClassName('tandem-booking')).forEach(function(e) {
+      e.setAttribute('href', bookingLink());
+    });
+  }
+
+  function bookingLink() {
+    return kontakt("Interesse für einen Tandemflug",
+    "Hallo Jonas,\r\n\
+\r\n\
+ich würde gerne einmal bei dir mitfliegen.\r\n\
+\r\n\
+Schönen Gruß\r\n\
+\r\n\
+\r\n");
+  }
+
+  function kontakt(betreff, msg) {
+    return "mai" + "lto:" + "{{ site.email }}"
+      + "?subject=" + encodeURI(betreff)
+      + "&body=" + encodeURI(msg);
+  }
+</script>
