@@ -1,4 +1,4 @@
-<section class="container container-pics">
+<section id="pics" class="container container-pics">
   <div class="col-lg-10 col-lg-offset-1 text-center">
     <div class="row">
       <div class="col-md-12">
@@ -12,7 +12,7 @@
             {% if image.extname == '.jpg' or image.extname == '.jpeg' %}
 
               <a href="https://www.instagram.com/{{ site.instagram }}/" target="_blank">
-                <img class="pic-item" src="{{ site.baseurl }}{{ image.path }}"/>
+                <img class="pic-item" src="./{{ image.path }}"/>
               </a>
             {% else %}
                   <!--
