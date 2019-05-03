@@ -19,6 +19,9 @@ address:
   - line: D-90762 Fürth
   - line: Deutschland
 
+collections:
+  - locations
+
 
   # Feel free to add more lines here
 telephone: +49 176 21000000

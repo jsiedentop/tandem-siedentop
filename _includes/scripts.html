@@ -47,12 +47,22 @@ Schönen Gruß\r\n\
          'useCache': true
        }).addTo(map);
 
-       L.marker([49.8572,11.2229]).bindPopup('<a href="geo:49.8572,11.2229" target="_blank">Siegritz</a>').addTo(map);
-       L.marker([49.1875,11.5236]).bindPopup('Waltersberg').addTo(map);
-       L.marker([49.2346,11.4805]).bindPopup('Winnberg').addTo(map);
-       L.marker([49.0491,10.7480]).bindPopup('Sammenheim').addTo(map);
+      {% for locations in site.locations %}
+        L.marker([{{ locations.location }}])
+          .bindPopup('<a href="https://maps.google.com/?q={{ locations.location }}" target="_blank">{{ locations.name }}</a>')
+          .addTo(map);
+      {% endfor %}
+
+       //L.marker([49.8572,11.2229]).bindPopup('<a href="https://maps.google.com/?q=49.8572,11.2229" target="_blank">Siegritz</a>').addTo(map);
+       //L.marker([49.1875,11.5236]).bindPopup('Waltersberg').addTo(map);
+       //L.marker([49.2346,11.4805]).bindPopup('Winnberg').addTo(map);
+       //L.marker([49.0491,10.7480]).bindPopup('Sammenheim').addTo(map);
 
 
+       //geo:49.8572,11.2229
+       //https://maps.google.com/?q=Houston,+TX
+       //If Apple, link like this:
+       //http://maps.apple.com/?q=Houston,+TX
 
 
        //geo:49.2346,11.4805?z=16 Winnberg Bei Ostwind
