@@ -1,8 +1,15 @@
+---
+layout: site
+---
+
 <h2>Impressum</h2>
-<p>Jonas Siedentop<br />
-Pegnitzstr.<br />31<br />90762 Fürth</p>
-<p>Telefon: 09116419280<br />
-E-Mail: <a href="mailto:tandem@sieden.top">tandem@sieden.top</a><br />
+{% for address in site.address %}
+  {{ address.line }}<br />
+{% endfor %}
+
+<p>
+  Telefon: {{ site.telephone }}<br />
+  E-Mail: <a href="mailto:{{ site.email }}">{{ site.email }}</a><br />
 </p>
 <br /><br /><h2>Disclaimer – rechtliche Hinweise</h2>
 § 1 Warnhinweis zu Inhalten<br />

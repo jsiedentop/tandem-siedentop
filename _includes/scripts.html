@@ -7,6 +7,8 @@
 <!-- Custom Theme JavaScript -->
 <script src="js/custom.js"></script>
 
+<script src="leaflet/leaflet.js"></script>
+
 <<script type="text/javascript">
 
   setTimeout(setBookingLinks, 500);
@@ -33,4 +35,62 @@ Schönen Gruß\r\n\
       + "?subject=" + encodeURI(betreff)
       + "&body=" + encodeURI(msg);
   }
+
+
+  geostuff();
+
+  function geostuff() {
+
+    var map = L.map('mapid').setView([49.5502,11.2280], 8);
+         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+         'attribution':  'Kartendaten &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> Mitwirkende',
+         'useCache': true
+       }).addTo(map);
+
+       L.marker([49.8572,11.2229]).bindPopup('<a href="geo:49.8572,11.2229" target="_blank">Siegritz</a>').addTo(map);
+       L.marker([49.1875,11.5236]).bindPopup('Waltersberg').addTo(map);
+       L.marker([49.2346,11.4805]).bindPopup('Winnberg').addTo(map);
+       L.marker([49.0491,10.7480]).bindPopup('Sammenheim').addTo(map);
+
+
+
+
+       //geo:49.2346,11.4805?z=16 Winnberg Bei Ostwind
+       //geo:49.2338,11.4878?z=16 Winnberg Bei Westwind
+       // Gelber Berg: geo:49.0425,10.7627?z=16
+
+  }
+
+  function geostuff2() {
+	   var locations = L.layerGroup();
+
+     L.marker([39.61, -105.02]).bindPopup('Siegritz').addTo(locations),
+	   L.marker([39.77, -105.23]).bindPopup('Waltersberg').addTo(locations);
+
+
+	    var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		    mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+	    var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
+		    streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+
+    	var map = L.map('map', {
+    		center: [39.73, -104.99],
+    		zoom: 10,
+    		layers: [grayscale, locations]
+    	});
+
+    	var baseLayers = {
+    		"Grayscale": grayscale,
+    		"Streets": streets
+    	};
+
+    	var overlays = {
+    		"Cities": locations
+    	};
+
+      L.control.layers(baseLayers, overlays).addTo(map);
+   }
 </script>
