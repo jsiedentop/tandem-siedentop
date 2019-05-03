@@ -12,7 +12,7 @@
             {% if image.extname == '.jpg' or image.extname == '.jpeg' %}
 
               <a href="https://www.instagram.com/{{ site.instagram }}/" target="_blank">
-                <img class="pic-item" src="./{{ image.path }}"/>
+                <img class="pic-item" src="{{ site.baseurl }{{ image.path }}"/>
               </a>
             {% else %}
                   <!--
