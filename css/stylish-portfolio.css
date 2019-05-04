@@ -190,7 +190,8 @@ hr.none {
 
 .container-pics {
 
-      padding: 50px 0;
+      /*padding: 50px 0;*/
+      padding-top: 50px;
 }
 
 .pic-item {
