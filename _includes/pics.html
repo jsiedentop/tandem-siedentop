@@ -12,7 +12,7 @@
             {% if image.extname == '.jpg' or image.extname == '.jpeg' %}
 
               <a href="https://www.instagram.com/{{ site.instagram }}/" target="_blank">
-                <img class="pic-item" src="{{ site.baseurl }}{{ image.path }}"/>
+                <img class="pic-item" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="{{ site.baseurl }}{{ image.path }}"/>
               </a>
             {% else %}
                   <!--
@@ -25,6 +25,18 @@
         {% endfor %}
       </div>
 
+      <script>
+        loadImages();
+        function loadImages() {
+          var imgDefer = document.getElementsByTagName('img');
+          for (var i = 0; i < imgDefer.length; i++) {
+            if (imgDefer[i].getAttribute('data-src')) {
+              imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
+            }
+          }
+        }
+      </script>
+      
     </div>
   </div>
   <hr>
